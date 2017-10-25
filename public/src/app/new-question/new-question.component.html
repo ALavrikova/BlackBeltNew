@@ -1,0 +1,33 @@
+<a [routerLink] = "['/']">Home</a>
+<a><span (click) = "logout()"><button type="button" name="logout">Logout</button></span></a>
+
+<h2>New Question</h2>
+    <form #createForm = "ngForm" method="post" (submit) = "createQuestion()">
+        <p>
+            Question:
+            <input
+                type="text"
+                name="question"
+                [(ngModel)] = "newquestion.question"
+                #question = "ngModel"
+                minlength = "10"
+                required>
+            <span *ngIf="question.invalid">
+                <span *ngIf="question.errors.required">Question is required.</span>
+                <span *ngIf="question.errors.minlength">Please ensure you enter a question of at least 10 characters.</span>
+            </span>
+        </p>
+        <p>
+            Description (optional):
+            <input
+                type="text"
+                name="description"
+                [(ngModel)] = "newquestion.description"
+                #description = "ngModel">
+        </p>
+        
+        <button type="submit" name="submit" [disabled] = "createForm.invalid">Submit</button>
+       	<a [routerLink] = "['/']">Cancel</a>
+    </form>
+
+

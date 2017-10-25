@@ -1,0 +1,17 @@
+<a [routerLink] = "['/']">Home</a>
+<a [routerLink] = "['/question/:id/new_answer']">Answer the question</a> 
+<a [routerLink] = "['/index']">Logout</a>
+
+<h2>{{ question.question }}</h2>
+    <table>
+        <tr>
+            <th>Answer</th>
+            <th>Current Count of Likes</th>
+            <th>Action </th>
+        </tr>
+        <tr *ngFor = "let answer of answers">
+            <td>{{answer.creator}} <br> {{ answer.answer }}</td>
+            <td>{{ answer.likes }} likes </td>
+            <td><button type="button" name="button" (click)="getAnswer(answer._id)">Like</button></td>
+        </tr>
+    </table>

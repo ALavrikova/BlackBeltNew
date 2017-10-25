@@ -1,0 +1,26 @@
+
+<h2>Hi {{ name }}!</h2>
+<a [routerLink] = "['/new_question']">Add a new question</a> 
+<a><span (click) = "logout()"><button type="button" name="logout">Logout</button></span></a>
+
+	<form #searchForm = "ngForm" method="post" (submit) = "searchQuestions()">
+     	<label> Search:
+            <input type="text" name="search" [(ngModel)] = "input.key" #search = "ngModel">
+        </label>
+        <input type="submit" name="submit" value="Submit" (submit) = "searchQuestions()">
+   	</form>
+
+    <table>
+        <tr>
+            <th>Question</th>
+            <th>Answers</th>
+            <th>Action</th>
+        </tr>
+        <tr *ngFor = "let question of questions">
+            <td>>{{ question.question }}</td>
+            <td>{{ answer.count }}</td>   
+            <td><a [routerLink] = "['/question/:id']">Show</a><a [routerLink] = "['/question/:id/new_answer']">Answer</a></td>
+        </tr>
+    </table>
+
+

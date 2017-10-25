@@ -1,0 +1,15 @@
+<h2>Q&A</h2>
+    <form #loginForm = "ngForm" method="post" (submit) = "login()">
+        <p>Name:
+        <input
+            type="text"
+            name="name"
+            [(ngModel)] = "user.name"
+            #name = "ngModel"
+            required> 
+        </p>
+        <button type="submit" name="submit">Enter</button>
+    </form>
+    <span *ngIf="name.invalid">
+        Name is required.
+    </span>

@@ -1,0 +1,32 @@
+<a [routerLink] = "['/']">Home</a>
+<a [routerLink] = "['/question/:id']">Go back to question</a>
+<a [routerLink] = "['/index']">Logout</a>
+
+<h2>{{question.question}}}</h2>
+    <form #createForm = "ngForm" method="post" (submit) = "createAnswer()">
+        <p>
+            Your answer:
+            <input
+                type="text"
+                name="answer"
+                [(ngModel)] = "newanswer.answer"
+                #answer = "ngModel"
+                minlength = "5"
+                required>
+            <span *ngIf="answer.invalid">
+                <span *ngIf="answer.errors.required">Answer is required.</span>
+                <span *ngIf="answer.errors.minlength">Answer should be at least 5 characters.</span>
+            </span>
+        </p>
+        <p>
+            Details (optional):
+            <input
+                type="text"
+                name="details"
+                [(ngModel)] = "newanswer.details"
+                #details = "ngModel">
+        </p>
+        
+        <button type="submit" name="submit" [disabled] = "createForm.invalid">Submit</button>
+       	<a [routerLink] = "['/']">Cancel</a>
+    </form>
